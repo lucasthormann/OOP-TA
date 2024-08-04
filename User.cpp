@@ -53,3 +53,16 @@ void User::printPurchasedStockList() {
 
   cout << "-------------------------------------------------------------------------------------------------------" << endl << endl;
 }
+
+//for adding a stock
+User& operator += (User& user, Industry st){
+  st.setBoughtPrice(st.getCurrentPrice()); // bought price is set when a stock is bought 
+  user.purchasedStocks.push_back(st);
+  user.adjustTotalValue();
+
+  return user;
+}
+
+// for selling a stock
+User& operator -= (User& user, Industry st){
+
