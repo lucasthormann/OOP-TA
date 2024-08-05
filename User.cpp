@@ -83,3 +83,15 @@ User& operator -= (User& user, Industry st){
 
   return user;
 }
+
+//simulates price change in purchased stocks in purchased stocks vector
+void User::priceChangeAllPurchasedStocks(){
+  this->totalValue = 0;
+  this->netValue = 0;
+
+  for(int i = 0; i < (int) this->purchasedStocks.size(); i++){
+    purchasedStocks.at(i).priceChange();
+  }
+  adjustTotalValue();
+  adjustNetValue();
+}
