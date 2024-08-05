@@ -95,3 +95,54 @@ void User::priceChangeAllPurchasedStocks(){
   adjustTotalValue();
   adjustNetValue();
 }
+
+// returns total value of portfolio
+void User::adjustTotalValue(){
+  for(int i = 0; i < (int) this->purchasedStocks.size(); i++){
+    this->totalValue+=purchasedStocks.at(i).totalStockValue();
+  }
+}
+
+void User::adjustNetValue() {
+  for(int i = 0; i < (int) this->purchasedStocks.size(); i++){
+    this->netValue+=purchasedStocks.at(i).getStockNetValue();
+  }
+}
+
+void User::printSoldStockList(){
+  cout << "The list of sold stock contain: " << endl << endl;
+
+  for(int i = 0; i < (int) this->soldStocks.size(); i++){
+    cout << "STOCK NUMBER - " << i+1 << endl << endl;
+
+    cout << "Sock Name: " << soldStocks.at(i).getName() << endl;
+    cout << "Today's Starting Price: " << soldStocks.at(i).getInitialPrice() << endl;
+    cout << "Current Price: " << soldStocks.at(i).getCurrentPrice() << endl;
+    cout << "Bought Price: " << soldStocks.at(i).getBoughtPrice() << endl;
+    cout << "Sold Price: " << soldStocks.at(i).getSoldPrice() << endl;
+
+    cout << "Number of Shares: " << soldStocks.at(i).getNumShares() << endl;
+    cout << "Total Value of Stocks: " << soldStocks.at(i).totalStockValue() << endl;
+    cout << "Net Profit/Loss on this Stock: " << soldStocks.at(i).getStockNetValue() << endl << endl;
+  }
+  cout << "------------------------------------------------------------------------------------------------------------------------------" << endl << endl;
+}
+
+//returns vector of industry objects
+vector<Industry> User::getPurchasedStocks(){
+  return this->purchasedStocks;
+}
+
+vector<Industry> User::getSoldStocks(){
+  return this->soldStocks;
+}
+
+void User::setTotalValue(double totalValue){
+  this->totalValue = totalValue;
+}
+
+void User::setNetValue(double netValue){
+  this->netValue=netValue;
+}
+
+
