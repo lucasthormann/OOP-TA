@@ -63,6 +63,23 @@ User& operator += (User& user, Industry st){
   return user;
 }
 
-// for selling a stock
+// for selling a stock (overloaded -= operator) removes stock from purchased stock vector and adds to sold stock vector
 User& operator -= (User& user, Industry st){
+  for(int i = 0; i < (int) user.purchasedStocks.size(); i++){
+    if(st.getName().compare(user.purchasedStocks.at(i).getName())==0){
+      user.purchasedStocks.at(i).setSoldPrice(st.getCurrentPrice());
+      user.soldStocks.push_back(user.purchasedStocks.at(i));
+      user.purchasedStocks.erase(user.purchasedStocks.begin()+i);
+      break;
+    }
+  }
 
+  //adjusting values for total value and net value of portfolio each time that a stock is sold
+  user.totalValue = 0;
+  user.netValue = 0;
+
+  user.adjustTotalValue();
+  user.adjustNetValue();
+
+  return user;
+}
