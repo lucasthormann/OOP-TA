@@ -41,6 +41,49 @@ void ProfileMenu::showMenu(){
   }
 }
 
+int ProfileMenu::getUserInput(){
+  int command;
+  cout << "Command: ";
+  cin >> command;
+  cout << endl;
 
+  return command;
+}
+
+void ProfileMenu::createProfile(){
+  string name;
+  string email;
+
+  cout << "Please enter your name: ";
+  getline(cin >> ws, name);
+
+  cout << "Please enter your email: ";
+  getline(cin >> ws, email);
+
+  cout << endl;
+  cout << "------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
+
+  this->user.setName(name);
+  this->user.setEmail(email);
+}
+
+// this function is used to read the portfolio file in order to then display the data to the user in a proper format
+bool ProfileMenu::loadProfile(){
+  string text;
+  bool read = false;
+
+  ifstream readFile("Portfolio.txt");
+
+  while(getline(readFile, text)){
+    // output the text from the file
+    if(read == false){
+      cout << "here is your existing portfolio data: " << endl << endl;
+      read = true;
+    }
+    cout << text << endl;
+  }
+  readFile.close();
+  return read;
+}
 
 
