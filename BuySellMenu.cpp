@@ -229,4 +229,54 @@ User sellStock(User u, Industry stock){
   return u;
 }
 
+void BuySellMenu::writeandSavePortfolio(User user){ //PBV since we aren't changing the object
+  ofstream output;
 
+  output.open("Portfolio.txt"); // opens the file
+  if(!output){
+    cerr << "Error: file could not be opened" << endl;
+    exit(1);
+  }
+
+  output << "-------------------------------------------------------------------------------------------------------" << endl;
+
+  output << "Name of user: " << user.getName() << endl;
+  output << "Email of user: " << user.getEmail() << endl;
+  output << "Total value of portfolio: " << user.getTotalValue() << endl;
+  output << "Net Profit/Loss in portfolio: " << user.getNetValue() << endl;
+
+  output << "--------------------------------------------------------------------------------------------------------" << endl << endl;
+
+  output << "The purchased stocks are: " << endl << endl;
+
+  for(int i = 0; i < (int) user.getPurchasedStocks().size(); i++){
+    output << "STOCK NUMBER - " << i + 1 << endl << endl;
+    output << "Description of all stocks in the same industry: " << user.getPurchasedStocks().at(i).getDescription() << endl;
+
+    output << "Stock Name: " << user.getPurchasedStocks().at(i).getName() << endl;
+    output << "Today's Starting Price: " << user.getPurchasedStocks().at(i).getInitialPrice() << endl;
+    output << "Current Price: " << user.getPurchasedStocks().at(i).getCurrentPrice() << endl;
+    output << "Bought Price: " << user.getPurchasedStocks().at(i).getBoughtPrice() << endl;
+    output << "Number of Shares: " << user.getPurchasedStocks().at(i).getNumShares() << endl;
+    output << "Total Value of Stocks: " << user.getPurchasedStocks().at(i).totalStockValue() << endl;
+    output << "Net Profit/Loss on this Stock: " << user.getPurchasedStocks().at(i).getStockNetValue() << endl << endl;
+  }
+  output << "----------------------------------------------------------------------------------------------------------" << endl << endl;
+
+  output << "The list of sold stocks contain: " << endl << endl;
+
+  for(int i = 0; i < (int) user.getSoldStocks().size(); i++){
+    output << "STOCK NUMBER - " << i + 1 << endl << endl;
+
+    output << "Stock Name: " << user.getSoldStocks().at(i).getName() << endl;
+    output << "Today's Starting Price: " << user.getSoldStocks().at(i).getInitialPrice() << endl;
+    output << "Current Price: " << user.getSoldStocks().at(i).getCurrentPrice() << endl;
+    output << "Bought Price: " << user.getSoldStocks().at(i).getBoughtPrice() << endl;
+    output << "Sold Price: " << user.getSoldStocks().at(i).getSoldPrice() << endl;
+    output << "Number of Shares: " << user.getSoldStocks().at(i).getNumShares() << endl;
+    output << "Total Value of Stocks: " << user.getSoldStocks().at(i).totalStockValue() << endl;
+    output << "Net Profit/Loss on this Stock: " << user.getSoldStocks().at(i).getStockNetValue() << endl << endl;
+  }
+  output << "-------------------------------------------------------------------------------------------------------------" << endl << endl;
+  output.close();
+}
