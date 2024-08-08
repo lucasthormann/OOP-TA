@@ -204,3 +204,29 @@ void BuySellMenu::userInputSellHandler(){
   user.printPurchasedStockList();
   user.printSoldStockList();
 }
+
+void BuySellMenu::printStockList(){
+  cout << "The stocks below, listed with their starting prices, are available for purchase:\n\n";
+  cout << "1. Nio - " << Nio.getInitialPrice() << endl;
+  cout << "2. Tesla - " << Tesla.getInitialPrice() << endl;
+  cout << "3. American Airlines - " << AmericanAirlines.getInitialPrice() << endl;
+  cout << "4. United Airlines - " << UnitedAirlines.getInitialPrice() << endl;
+  cout << "5. Gamestop - " << Gamestop.getInitialPrice() << endl;
+  cout << "6. Electronic Arts - " << EA.getInitialPrice() << endl;
+  cout << "7. Facebook - " << Facebook.getInitialPrice() << endl;
+  cout << "8. Apple - " << Apple.getInitialPrice() << endl;
+}
+
+User addStock(User u, Industry stock){
+  u+=stock;
+  u.priceChangeAllPurchasedStocks(); // enable to allow day trading
+  return u;
+}
+
+User sellStock(User u, Industry stock){
+  u-=stock;
+  u.priceChangeAllPurchasedStocks(); // enable to allow day trading
+  return u;
+}
+
+
