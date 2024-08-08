@@ -154,3 +154,53 @@ void BuySellMenu::userInputBuyHandler(){
     this->Apple.setNumShares(0);
   }
 }
+
+void BuySellMenu::userInputSellHandler(){
+  string stockSellChoice = "";
+
+  if(user.getPurchasedStocks().empty()){
+    cout << "You have not bought any stocks that can be sold! Returning to the main menu...\n\n";
+    cout << "-------------------------------------------------------------------------------------------\n\n";
+    return;
+  }
+
+  cout << "Please enter the name of the stock you want to sell: ";
+  getline(cin >> ws, stockSellChoice);
+  cout << endl;
+
+  if(stockSellChoice.compare("Nio") == 0){
+    this->user = sellStock(this->user, this->Nio);
+  }
+  else if(stockSellChoice.compare("Tesla") == 0){
+    this->user = sellStock(this->user, this->Tesla);
+  }
+  else if(stockSellChoice.compare("American Airlines") == 0){
+    this->user = sellStock(this->user, this->AmericanAirlines);
+  }
+  else if(stockSellChoice.compare("United Airlines") == 0){
+    this->user = sellStock(this->user, this->UnitedAirlines);
+  }
+  else if(stockSellChoice.compare("Gamestop") == 0){
+    this->user = sellStock(this->user, this->Gamestop);
+  }
+  else if(stockSellChoice.compare("Electronic Arts") == 0){
+    this->user = sellStock(this->user, this->EA);
+  }
+  else if(stockSellChoice.compare("Facebook") == 0){
+    this->user = sellStock(this->user, this->Facebook);
+  }
+  else if(stockSellChoice.compare("Apple") == 0){
+    this->user = sellStock(this->user, this->Apple);
+  }
+  else{
+    cout << "Invalid stock name! Please try again. Returning to the main menu...\n";
+    cout << "---------------------------------------------------------------------------------------------\n\n";
+    return;
+  }
+
+  cout << "Congratulations, you have sold stock!\n\n";
+  cout << "UPDATED LISTS\n";
+  cout << "--------------------------------------------------------------------------------------------------\n\n";
+  user.printPurchasedStockList();
+  user.printSoldStockList();
+}
