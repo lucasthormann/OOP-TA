@@ -60,3 +60,97 @@ void BuySellMenu::showMenu(){
   }
 }
 
+int BuySellMenu::getUserInput(){
+  int menuChoice = 0;
+
+  cout << "Enter your menu choice number: ";
+  cin >> menuChoice;
+  cout << "-------------------------------------------------------------------------------------------------------------------------------\n\n";
+  return menuChoice;
+}
+
+void BuySellMenu::userInputBuyHandler(){
+  int stockBuyChoice = 0;
+  int numShares = 0;
+
+  this->printStockList();
+  cout << "\nEnter the stock number you want to buy: ";
+  cin >> stockBuyChoice;
+  cout << endl; // clear char buffer
+
+  if(stockBuyChoice < 1 || stockBuyChoice > 8){
+    cout << "Invalid option! Returning to the main menu...\n\n";
+    cout << "------------------------------------------------------------------------------------------------------------------------------\n\n;
+    return;
+  }
+
+  cout << "Please enter the number of shares you want to buy: ";
+  cin >> numShares;
+
+  cout << endl << "Congratulations you have bought the chosen stock!\n\n";
+  cout << "---------------------------------------------------------------------------------------------------------------------------------\n\n;
+
+  if(stockBuyChoice == 1){
+    this->Nio.setNumShares(numShares);
+    this->user = addStock(this->user, this->Nio);
+
+    this->user.printPurchasedStockList();
+    this->Nio.setNumShares(0);
+  }
+
+  else if(stockBuyChoice == 2){
+    this->Tesla.setNumShares(numShares);
+    this->user = addStock(this->user, this->Tesla);
+
+    this->user.printPurchasedStockList();
+    this->Tesla.setNumShares(0);
+  }
+
+  else if(stockBuyChoice == 3){
+    this->AmericanAirlines.setNumShares(numShares);
+    this->user = addStock(this->user, this->AmericanAirlines);
+
+    this->user.printPurchasedStockList();
+    this->AmericanAirlines.setNumShares(0);
+  }
+
+  else if(stockBuyChoice == 4){
+    this->UnitedAirlines.setNumShares(numShares);
+    this->user = addStock(this->user, this->UnitedAirlines);
+
+    this->user.printPurchasedStockList();
+    this->UnitedAirlines.setNumShares(0);
+  }
+
+  else if(stockBuyChoice == 5){
+    this->Gamestop.setNumShares(numShares);
+    this->user = addStock(this->user, this->Gamestop);
+
+    this->user.printPurchasedStockList();
+    this->Gamestop.setNumShares(0);
+  }
+
+  else if(stockBuyChoice == 6){
+    this->EA.setNumShares(numShares);
+    this->user = addStock(this->user, this->EA);
+
+    this->user.printPurchasedStockList();
+    this->EA.setNumShares(0);
+  }
+
+  else if(stockBuyChoice == 7){
+    this->Facebook.setNumShares(numShares);
+    this->user = addStock(this->user, this->Facebook);
+
+    this->user.printPurchasedStockList();
+    this->Facebook.setNumShares(0);
+  }
+
+  else if(stockBuyChoice == 8){
+    this->Apple.setNumShares(numShares);
+    this->user = addStock(this->user, this->Apple);
+
+    this->user.printPurchasedStockList();
+    this->Apple.setNumShares(0);
+  }
+}
