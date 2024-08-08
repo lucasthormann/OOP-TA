@@ -35,7 +35,7 @@ void showUserStats(User user){
 void User::printPurchasedStockList() {
   cout << "The purchased stocks are: " << endl << endl;
 
-  for(int i = 0; i < (int) purhcasedStocks.size(); i++){
+  for(int i = 0; i < (int) purchasedStocks.size(); i++){
 
     cout << "STOCK NUMBER-" << i+1 << endl << endl;
 
