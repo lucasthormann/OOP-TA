@@ -16,7 +16,7 @@ void ProfileMenu::showMenu(){
     userInput=getUserInput();
 
     if(userInput==1){
-      createPortfolio();
+      createProfile();
       return;
     }
     else if(userInput==2){

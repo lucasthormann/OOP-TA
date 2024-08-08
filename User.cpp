@@ -4,11 +4,11 @@ void User::setName(string name){
   this->name=name;
 }
 
-void User::getName(){
+string User::getName(){
   return this->name;
 }
 
-string User::setEmail(string email){
+void User::setEmail(string email){
   this->email=email;
 }
 

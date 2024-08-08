@@ -1,4 +1,4 @@
-#include <Industry.h>
+#include "Industry.h"
 
 //currentPrice getter
 double Industry::getCurrentPrice(){
@@ -16,12 +16,12 @@ void Industry::setInitialPrice(double initialStockPrice){
 }
 
 //initialPrice getter
-void Industry::getInitialPrice(){
+double Industry::getInitialPrice(){
   return initialStockPrice;
 }
 
 //stockName getter method
-void Industry::getName(){
+string Industry::getName(){
   return stockName;
 }
 
@@ -48,12 +48,12 @@ void Industry::priceChange(){
 
 //setter for stock description
 void Industry::setDescription(string des){
-  this->descritption=des;
+  this->description=des;
 }
 
 //getter for stock description
 void Industry::printDescription(){
-  cout << this->descritption << endl;
+  cout << this->description << endl;
 }
 
 //getter for bought price

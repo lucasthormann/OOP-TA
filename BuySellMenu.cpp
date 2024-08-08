@@ -80,7 +80,7 @@ void BuySellMenu::userInputBuyHandler(){
 
   if(stockBuyChoice < 1 || stockBuyChoice > 8){
     cout << "Invalid option! Returning to the main menu...\n\n";
-    cout << "------------------------------------------------------------------------------------------------------------------------------\n\n;
+    cout << "------------------------------------------------------------------------------------------------------------------------------\n\n";
     return;
   }
 
@@ -88,7 +88,7 @@ void BuySellMenu::userInputBuyHandler(){
   cin >> numShares;
 
   cout << endl << "Congratulations you have bought the chosen stock!\n\n";
-  cout << "---------------------------------------------------------------------------------------------------------------------------------\n\n;
+  cout << "---------------------------------------------------------------------------------------------------------------------------------\n\n";
 
   if(stockBuyChoice == 1){
     this->Nio.setNumShares(numShares);
@@ -123,11 +123,11 @@ void BuySellMenu::userInputBuyHandler(){
   }
 
   else if(stockBuyChoice == 5){
-    this->Gamestop.setNumShares(numShares);
-    this->user = addStock(this->user, this->Gamestop);
+    this->GameStop.setNumShares(numShares);
+    this->user = addStock(this->user, this->GameStop);
 
     this->user.printPurchasedStockList();
-    this->Gamestop.setNumShares(0);
+    this->GameStop.setNumShares(0);
   }
 
   else if(stockBuyChoice == 6){
@@ -180,8 +180,8 @@ void BuySellMenu::userInputSellHandler(){
   else if(stockSellChoice.compare("United Airlines") == 0){
     this->user = sellStock(this->user, this->UnitedAirlines);
   }
-  else if(stockSellChoice.compare("Gamestop") == 0){
-    this->user = sellStock(this->user, this->Gamestop);
+  else if(stockSellChoice.compare("GameStop") == 0){
+    this->user = sellStock(this->user, this->GameStop);
   }
   else if(stockSellChoice.compare("Electronic Arts") == 0){
     this->user = sellStock(this->user, this->EA);
@@ -211,7 +211,7 @@ void BuySellMenu::printStockList(){
   cout << "2. Tesla - " << Tesla.getInitialPrice() << endl;
   cout << "3. American Airlines - " << AmericanAirlines.getInitialPrice() << endl;
   cout << "4. United Airlines - " << UnitedAirlines.getInitialPrice() << endl;
-  cout << "5. Gamestop - " << Gamestop.getInitialPrice() << endl;
+  cout << "5. GameStop - " << GameStop.getInitialPrice() << endl;
   cout << "6. Electronic Arts - " << EA.getInitialPrice() << endl;
   cout << "7. Facebook - " << Facebook.getInitialPrice() << endl;
   cout << "8. Apple - " << Apple.getInitialPrice() << endl;
